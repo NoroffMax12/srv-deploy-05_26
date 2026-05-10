@@ -9,6 +9,8 @@ const pool = mysql.createPool({ // NTS: Pool resuses connections instead of crea
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    ssl: { rejectUnauthorized: true } // mandatory by Aiven
+    ssl: { rejectUnauthorized: false } // mandatory by Aiven
 });
 
+module.exports = pool;
+// Used almost 3 hours debugning before noticing i forgot exporting pool...fml

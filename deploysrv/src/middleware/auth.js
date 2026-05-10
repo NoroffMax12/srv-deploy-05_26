@@ -25,6 +25,7 @@ const basicAuth = async (req, res, next) => { //Gets auth-headr form req
 
     next();
   } catch (err) {
+    console.error(err); // NTS: Delete ltr
     res.status(500).json({ error: 'Server error' })
   }
 };

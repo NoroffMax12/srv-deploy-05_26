@@ -38,15 +38,16 @@ exports.addParticipant = async (req, res) => {
     );
 
     res.status(201).json({ message: 'Participant added successfully' })
-  } catch (err) {
     // Handle duplicate email
-    if (err.code === 'ER_DUP_ENTRY') {
-      return res.status(409).json({ error: 'Participant with this email already exists' });
-    }
-    res.status(500).json({ error: 'Server error' })
-  }
-};
 
+    } catch (err) {
+        if (err.code === 'ER_DUP_ENTRY') {
+          return res.status(409).json({ error: 'Participant with this email already exists' });
+        }
+        res.status(500).json({ error: 'Server error' });
+      } 
+
+    }
 // GET /participants - Return all participants (email, firstname, lastname)
 exports.getParticipants = async (req, res) => {
   try {
